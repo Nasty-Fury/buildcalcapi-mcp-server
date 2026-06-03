@@ -1,0 +1,62 @@
+# Smithery server manifest — https://smithery.ai
+# Indexes BuildCalc API's MCP server for discovery via the Smithery hub.
+
+startCommand:
+  type: http
+  url: https://api.buildcalcapi.dev/mcp
+
+  # User provides their BuildCalc API key via Smithery's config UI; we forward
+  # it as the Authorization header. Get a free key (1k req/mo) at
+  # https://buildcalcapi.dev/signup.
+  configSchema:
+    type: object
+    required: [apiKey]
+    properties:
+      apiKey:
+        type: string
+        title: BuildCalc API key
+        description: |
+          Your BuildCalc API key (starts with `bcapi_`). Get one free at
+          https://buildcalcapi.dev/signup — Free tier ships 1,000 requests/month
+          with no credit card required for sign-up (Stripe payment method on
+          file is used only for anti-abuse, not charged on Free tier).
+        format: password
+
+  # Headers forwarded to the upstream MCP endpoint.
+  headers:
+    Authorization: "Bearer ${apiKey}"
+
+metadata:
+  name: BuildCalc API
+  display_name: BuildCalc API
+  description: |
+    Vertical construction data API for AI agents and developers. ~105 MCP tools
+    across 5 federated verticals: 81 building-code-grounded construction
+    calculators (concrete, framing, drywall, roofing, HVAC sizing, NEC electrical,
+    UPC/IPC plumbing, IECC envelope, IRC stairs, etc), IRC/IBC/NEC/IECC/IPC
+    building-code sections lookup (937 sections, dual-edition 2021/2024),
+    federal cost data (BLS PPI materials + OEWS/QCEW labor wages by MSA/county/ZIP
+    + Census BPS permits for ~7,800 jurisdictions), certified product catalog
+    (43,400+ SKUs across 10 categories with ENERGY STAR / NFRC CPD / ICC-ES ESR
+    / EPA WaterSense sources), and project cost/duration benchmarks (15
+    standardized US residential project types × MSA/county/state/national tier).
+    96% of catalog is `confidence='certified'` from federal/regulatory sources.
+  category: construction
+  tags:
+    - construction
+    - building-codes
+    - calculators
+    - federal-data
+    - irc
+    - nec
+    - bls
+    - census
+    - energy-star
+    - icc-es
+    - nfrc
+  homepage: https://buildcalcapi.dev
+  documentation: https://docs.buildcalcapi.dev
+  source: https://github.com/Nasty-Fury/buildcalc-api
+  license: Proprietary (SDKs MIT)
+  vendor: NF Nation LLC
+  contact: support@buildcalcapi.dev

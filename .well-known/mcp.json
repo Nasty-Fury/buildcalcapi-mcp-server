@@ -1,0 +1,71 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schemas/server-manifest.json",
+  "name": "buildcalc-api",
+  "display_name": "BuildCalc API",
+  "version": "0.4.1",
+  "description": "Vertical construction data API for AI agents and developers. 5 federated verticals (calculators, codes, costs, products, benchmarks) with ~105 MCP tools, grounded in U.S. federal sources (BLS / Census / EPA / ENERGY STAR / NFRC) + ICC-ES Evaluation Service Reports + manufacturer spec sheets. 96% certified-grade confidence.",
+  "homepage": "https://buildcalcapi.dev",
+  "documentation": "https://docs.buildcalcapi.dev",
+  "source": "https://github.com/Nasty-Fury/buildcalc-api",
+  "openapi": "https://docs.buildcalcapi.dev/openapi.json",
+  "vendor": {
+    "name": "NF Nation LLC",
+    "url": "https://buildcalcapi.dev",
+    "support_email": "support@buildcalcapi.dev",
+    "partnerships_email": "partners@buildcalcapi.dev"
+  },
+  "transport": {
+    "type": "streamable_http",
+    "url": "https://api.buildcalcapi.dev/mcp"
+  },
+  "authentication": {
+    "type": "bearer",
+    "signup_url": "https://buildcalcapi.dev/signup",
+    "description": "Free-tier API key (1,000 requests/month) — sign up at the URL above. Paid tiers: Starter $49/mo (50k req), Growth $249/mo (500k req), Enterprise from $1.5k/mo."
+  },
+  "tools_summary": {
+    "total_count": 105,
+    "categories": [
+      "calculators (81 tools, 16 categories: concrete · framing · lumber · drywall · roofing · paint · flooring · hvac · insulation · masonry · electrical-NEC · plumbing-UPC-IPC · doors-windows-IECC · gutters · stairs-IRC · site · misc)",
+      "codes (5 tools: IRC/IBC/NEC/IECC/IPC section lookup with FTS, 937 sections, dual-edition 2021/2024)",
+      "costs (8 tools: BLS PPI materials, OEWS+QCEW labor wages, Census BPS permits)",
+      "products (6 tools: 43,400+ certified SKUs across 10 categories with JSONB spec filters)",
+      "benchmarks (4 tools: 15 standardized US residential project types × 5 geographies)"
+    ]
+  },
+  "rate_limits": {
+    "spec": "IETF draft-04 (RateLimit-Limit / RateLimit-Remaining / RateLimit-Reset headers)",
+    "self_throttle_recommendation_qps": 1
+  },
+  "errors": {
+    "spec": "RFC 7807 problem+json envelope",
+    "schema": "https://docs.buildcalcapi.dev/docs/errors"
+  },
+  "categories": [
+    "construction",
+    "engineering",
+    "building-codes",
+    "calculators",
+    "federal-data"
+  ],
+  "tags": [
+    "construction",
+    "building-codes",
+    "irc",
+    "ibc",
+    "nec",
+    "iecc",
+    "ipc",
+    "bls",
+    "census-bps",
+    "energy-star",
+    "icc-es",
+    "nfrc",
+    "epa-watersense",
+    "simpson-strong-tie",
+    "calculators",
+    "hvac-sizing",
+    "labor-wages",
+    "permit-data"
+  ]
+}
