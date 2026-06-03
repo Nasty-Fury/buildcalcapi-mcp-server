@@ -6,13 +6,21 @@
     "url": "https://github.com/Nasty-Fury/buildcalc-api",
     "source": "github"
   },
-  "version": "0.4.1",
+  "version": "0.4.2",
   "remotes": [
     {
       "type": "streamable-http",
       "url": "https://api.buildcalcapi.dev/mcp"
     }
   ],
+  "auth": {
+    "type": "oauth2",
+    "authorization_url": "https://api.buildcalcapi.dev/oauth/authorize",
+    "token_url": "https://api.buildcalcapi.dev/oauth/token",
+    "metadata_url": "https://api.buildcalcapi.dev/.well-known/oauth-authorization-server",
+    "pkce_required": true,
+    "pkce_methods": ["S256"]
+  },
   "websiteUrl": "https://buildcalcapi.dev",
   "icon": "https://buildcalcapi.dev/og-default.png"
 }
